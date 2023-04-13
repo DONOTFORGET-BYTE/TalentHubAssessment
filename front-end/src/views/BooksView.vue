@@ -1,5 +1,4 @@
 <script setup>
-// //import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useBooksStore } from '../stores/book'
 import { ref } from 'vue'
@@ -12,7 +11,6 @@ const { fetchBooks } = useBooksStore()
 // retrieve books from the store
 fetchBooks()
 
-let ascending = ref(true)
 let sortItems = ['title','author']
 let sortBy = ref('title')
 let searchValue = ref('')
@@ -29,11 +27,9 @@ function filteredBooks() {
             .includes(this.searchValue.toUpperCase())
         })
       }
-      // console.log('sortBy',sortBy); //debugging purposes
       
            
-    // Sort by title
-    tempBooks = tempBooks.sort((a, b) => {
+    tempBooks = tempBooks.sort((a, b) => { // Sort by title
     if (this.sortBy == 'title') {
       let comp_a = a.title.toLowerCase(), comp_b = b.title.toLowerCase()
           
@@ -44,7 +40,7 @@ function filteredBooks() {
         return 1 
       }
       return 0
-    } else if (this.sortBy == 'author'){
+    } else if (this.sortBy == 'author'){ // Sort by author
       let comp_a = a.author.toLowerCase(), comp_b = b.author.toLowerCase()
           
       if (comp_a < comp_b) {
@@ -58,13 +54,7 @@ function filteredBooks() {
     }
     })
         
-    // Show sorted array in descending or ascending order
-    // if (!this.ascending) {
-    //   tempBooks.reverse()
-    // }
-        
-    
-    // console.log('filtered books ',tempBooks); // debugging purposes
+
     return tempBooks
   }
 
@@ -76,11 +66,7 @@ function filteredBooks() {
     <div >
 
     <h2>Books:</h2>
-
-    <!-- Bar containing all sort inputs -->
     
-    
-      <div class="d-flex flex-column">
       <v-select  
         v-model="sortBy"
         :items="sortItems"
@@ -89,7 +75,6 @@ function filteredBooks() {
         ></v-select>
 
       <v-text-field v-model="searchValue" clearable label="search book"></v-text-field>
-      </div>
 
 
 
@@ -99,35 +84,52 @@ function filteredBooks() {
     <!--<p v-if="books"> {{ books }} </p>-->
     <div id="books-container" v-if="books">
       
-    <div class="card" v-for="book in filteredBooks()" :key="book.title">
-      <img :src="book.img" class="book-image"/>
+    <div class="card" v-for="book in filteredBooks()" :key="book.id">
+      <img :src="book.coverImage" class="book-image"/>
       <div class="content">
         <span>
           <h1 class="book-title">
             {{ book.title }}
           </h1>
-
           <h3 class="author-title">
             Author: {{ book.author }}
           </h3>
         </span>
 
-      <v-btn color="red lighten-2" dark @click="dialog = true">
+        <div class="text-center">
+   
+    <v-btn color="red lighten-2" dark @click="book.dialog = true">
         view more
         </v-btn>
         <v-dialog
-          v-model="dialog"
-          width="auto"
+          v-model="book.dialog"
+          width="500"
         >
+
       <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Summary
+        </v-card-title>
+
         <v-card-text>
           {{ book.summary }}
         </v-card-text>
+
+        <v-divider></v-divider>
+
         <v-card-actions>
-          <v-btn color="primary" block @click="dialog = false">Close</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="book.dialog = false"
+          >
+            close
+          </v-btn>
         </v-card-actions>
       </v-card>
-      </v-dialog>
+    </v-dialog>
+  </div>
 
       </div>
 
@@ -146,13 +148,6 @@ body {
   background: #20262E;
   padding: 20px;
   font-family: Helvetica;
-}
-
-#app {
-  background: #fff;
-  border-radius: 4px;
-  padding: 10px;
-  transition: all 0.2s;
 }
 h2 {
   font-weight: bold;
@@ -199,23 +194,6 @@ h3 {
   width: 100%;
   max-height: 200px;
   padding: -10px -10px;;
-}
-
-.sort-button {
-  background-color: rgba(0,0,0,0);
-  border: none;
-  height: 100%;
-  width: 50px;
-  &:hover {
-    background-color: rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-}
-
-#ascending-icon {
-  // height: 30px;
-  height: 100%;
-  width: 30px;
 }
 
 
