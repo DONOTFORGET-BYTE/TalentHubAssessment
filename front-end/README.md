@@ -1,19 +1,24 @@
-# books
+# Books
 
-This template should help get you started developing with Vue 3 in Vite.
+This front end uses Vue 3 in Vite with pinia and axios and vueRouter.
 
-## Recommended IDE Setup
+## Prerequisites
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+NodeJs>=16
 
 ## Project Setup
 
 ```sh
-npm install
+download the code
+```
+```sh
+extract zip file in any directory
+```
+```sh
+open CMD in directory
+```
+```sh
+type npm install (to install project dependencies)
 ```
 
 ### Compile and Hot-Reload for Development
