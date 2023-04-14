@@ -1,3 +1,4 @@
-1, Rich Dad Poor Dad ,Robert Kiwosaki , images/book1.png, book about how to get rich
-2, Book 1 ,Author 1 , images/book1.png, summary 1
-3, Book 2 ,Author 2 , images/book3.png, summary 2
+1, Rich Dad Poor Dad ,Robert Kiwosaki , https://picsum.photos/500/300?random=1, book about how to get rich
+2, Book 1 ,Author 1 , https://picsum.photos/500/300?random=2, summary 10 with some additonal information
+3, Book 2 ,Author 2 , https://picsum.photos/500/300?random=4, summary 22
+4, Book 3 ,Author 3 , https://picsum.photos/500/300?random=3, summary 14
