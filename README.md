@@ -14,3 +14,5 @@ Please review the pictures in the demo folder for an example demostration of the
 ## Project Setup
 
 Inorder to run the code successfully please follow the instructions supplied in each readme within front-end and back-end directories.
+
+And make sure to run the backend first, so the books can be served on the front end.
